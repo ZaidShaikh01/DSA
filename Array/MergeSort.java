@@ -23,6 +23,9 @@ public class MergeSort {
 
         mergeSort(arr,midIndex+1,high);
 
+        merge(arr,low,midIndex,high);
+
+
 
 
     }
@@ -39,7 +42,7 @@ public class MergeSort {
                 left++;
             }
             else {
-                temp.add(arr[left]);
+                temp.add(arr[right]);
                 right++;
             }
         }
@@ -57,7 +60,7 @@ public class MergeSort {
 
         // Now we copy the elements in the original array
         for (int i=0;i<temp.size();i++){
-            arr[i+low]= temp.get(i);
+            arr[low+i]= temp.get(i);
         }
 
     }
