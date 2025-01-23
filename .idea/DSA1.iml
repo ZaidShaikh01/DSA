@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Hashing" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Map" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Stack" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Sorting" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
