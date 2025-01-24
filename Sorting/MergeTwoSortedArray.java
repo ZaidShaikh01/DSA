@@ -6,30 +6,30 @@ public class MergeTwoSortedArray {
 
         int a=m-1;
         int b=n-1;
+        int c= nums1.length-1;
 
-        for(int i=m+n-1;i>=0;i--){
 
 
-            if(nums1[a]<nums2[b] && a>0 && b>0){
-                nums1[i]=nums2[b];
+        while(b>=0){
+
+            if (a>=0 && nums1[a]>=nums2[b]){
+                nums1[c]=nums1[a];
+                a--;
+                c--;
+            }
+            else {
+                nums1[c]=nums2[b];
+                c--;
                 b--;
-            }
-            else if (nums1[a]==nums2[b] && a>0 && b>0){
-                nums1[i]=nums1[a];
-                a--;
-            }
-            else if (nums1[a]>nums2[b] && a>0 && b>0){
-                nums1[i]=nums1[a];
-                a--;
             }
         }
 
     }
     public static void main(String[] args) {
-        int[] nums1={1,2,3,0,0,0};
-        int[] nums2={2,5,6};
-        int m=3;
-        int n=3;
+        int[] nums1={2,0};
+        int[] nums2={1};
+        int m=1;
+        int n=1;
         merge(nums1,m,nums2,n);
         System.out.println(Arrays.toString(nums1));
 
