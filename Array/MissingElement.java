@@ -25,11 +25,13 @@ public class MissingElement {
 
     }
 
+
     public static void main(String[] args) {
 
-        int [] arr={7,1,5,3,6,2,0,8,9};
+        int [] arr={7,1,5,0,3,6,2,8,9};
         int miss=missingNumber(arr);
         System.out.println(miss);
+
 
     }
 }
