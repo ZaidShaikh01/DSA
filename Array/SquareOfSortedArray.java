@@ -3,10 +3,22 @@ import java.util.Arrays;
 public class SquareOfSortedArray {
     public static int[] sortedSquares(int[] nums) {
             // Brute approach
-        for (int i=0;i<nums.length;i++){
+       /* for (int i=0;i<nums.length;i++){
             nums[i]=nums[i]*nums[i];
         }
         Arrays.sort(nums);
+
+        */
+        // Optimal apparoch
+
+
+        /*
+        The extremes are like maximum square number
+        //// Using two pointer
+         */
+
+
+
         return nums;
     }
 
