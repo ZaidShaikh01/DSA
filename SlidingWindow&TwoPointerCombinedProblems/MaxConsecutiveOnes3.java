@@ -12,9 +12,11 @@ public class MaxConsecutiveOnes3 {
 
         int zeroCount=0;
         while (right<nums.length){
+
             if (nums[right]==0){
                 zeroCount++;
             }
+
             while (zeroCount>k){
                 if (nums[left]==0){
                     zeroCount--;
