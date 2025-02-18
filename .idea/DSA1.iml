@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Sorting" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SlidingWindow&amp;TwoPointerCombinedProblems" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Patterns" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Recurusion" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
