@@ -10,8 +10,19 @@ public class JosephusProblem {
 
     }
 
+    public static int iterativeApparoch(int n, int k){
+        int prev=1;
+        int survivor=0;
+        for(int i = 2;i<=n;i++){
+            survivor=(survivor+k)%i;
+
+        }
+        return survivor+1;
+    }
+
     public static void main(String[] args) {
-        System.out.println(findTheWinner(5,3));
+        System.out.println(findTheWinner(5,2));
+        System.out.println(iterativeApparoch(5,2));
     }
 
 }
