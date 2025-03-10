@@ -15,4 +15,8 @@ public class BacktrackingTemplate {
 //        }
 //    }
 
+    /*
+    o, It's like for subset there is simple base case.... For subset 2 I can modify it to if list does not contain the element then only add the element ... Nd for combination question if the size is equal to k then only add.. Is it like the only diff?
+     */
+
 }
