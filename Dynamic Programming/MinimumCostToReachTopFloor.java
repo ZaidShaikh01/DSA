@@ -49,15 +49,17 @@ public class MinimumCostToReachTopFloor {
     public static int minCostClimbingStairs(int[] cost) {
         // Creating an array to store teh values
         int n =cost.length;
-        int [] dp = new int[cost.length+1];
-        dp[0] = cost[0];
-        dp[1] = cost[1];
+
+        int prev2 = cost[0];
+        int prev = cost[1];
 
         for (int i=2;i<cost.length;i++){
-            dp[i] = cost [i]+ Math.min(dp[i-1],dp[i-2]);
+            int current = cost [i]+ Math.min(prev,prev2);
+            prev2=prev;
+            prev=current;
 
         }
-        return Math.min(dp[n-1],dp[n-2]);
+        return Math.min(prev,prev2);
 
     }
 
