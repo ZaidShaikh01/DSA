@@ -32,22 +32,47 @@ public class FrogJump {
 //        return dp[step]=Math.min(oneStep,twoStep);
 //    }
 
+    // Tabuation apparoch
+
+//    public static int minCost(int[] height) {
+//
+//        int [] dp =  new int[height.length];
+//        // The base cases
+//        dp[0] = 0;
+//        dp[1] = Math.abs(height[1]-height[0]);
+//
+//        for (int i = 2 ; i < dp.length;i++){
+//            int oneStep =Math.abs(height[i] - height[i-1]) + dp[i-1];
+//            int twoStep = Math.abs(height[i]-height[i-2]) + dp[i-2];
+//            dp[i]=Math.min(oneStep,twoStep);
+//        }
+//
+//
+//
+//        return dp[dp.length-1];
+//
+//    }
+
     public static int minCost(int[] height) {
 
-        int [] dp =  new int[height.length];
-        // The base cases
-        dp[0] = 0;
-        dp[1] = Math.abs(height[1]-height[0]);
 
-        for (int i = 2 ; i < dp.length;i++){
-            int oneStep =Math.abs(height[i] - height[i-1]) + dp[i-1];
-            int twoStep = Math.abs(height[i]-height[i-2]) + dp[i-2];
-            dp[i]=Math.min(oneStep,twoStep);
+        // The base cases
+        int prev2 = 0;
+        int prev = 0;
+        if (height.length>1) {
+            prev = Math.abs(height[1] - height[0]);
+        }
+
+        for (int i = 2 ; i < height.length;i++){
+            int oneStep =Math.abs(height[i] - height[i-1]) + prev;
+            int twoStep = Math.abs(height[i]-height[i-2]) + prev2;
+            prev2 = prev;
+            prev=Math.min(oneStep,twoStep);
         }
 
 
 
-        return dp[dp.length-1];
+        return prev;
 
     }
 
