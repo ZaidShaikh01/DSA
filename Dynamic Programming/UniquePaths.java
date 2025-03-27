@@ -70,7 +70,8 @@ public class UniquePaths {
             return dp[m-1][n-1];
         }
 
-    // Tabulation approach
+
+
     public static void main(String[] args) {
         System.out.println(uniquePaths(3,2));
     }
