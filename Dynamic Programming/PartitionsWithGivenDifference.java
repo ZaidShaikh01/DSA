@@ -1,8 +1,13 @@
-public class PerfectSumProblem {
-
-    static int mod = (int)1e9 + 7;
-
-//    public static int perfectSum(int[] nums, int target) {
+public class PartitionsWithGivenDifference {
+//    static int mod = (int)1e9 + 7;
+//
+//    public static int countPartitions(int[] nums, int D) {
+//        int totalSum =0;
+//        for (int i=0;i< nums.length;i++) totalSum+=nums[i];
+//
+//        if (totalSum<D || (totalSum + D) % 2 != 0) return 0;
+//
+//        int target = (totalSum + D) / 2;
 //        // code here
 //        int [][]dp= new int[nums.length][target+1];
 //
@@ -36,37 +41,39 @@ public class PerfectSumProblem {
 //        return dp[index][target]= (take+notTake) % mod;
 //
 //    }
+    static int mod = (int)1e9 + 7;
+    public static int countPartitions(int[] nums, int D) {
+        int totalSum =0;
+        for (int i=0;i< nums.length;i++) totalSum+=nums[i];
 
-    // Tabulation apparoch
-    public static int perfectSum(int[] nums, int target) {
+        if (totalSum<D || (totalSum + D) % 2 != 0) return 0;
+
+        int target = (totalSum + D) / 2;
         // code here
         int [][]dp= new int[nums.length][target+1];
-        int mod= (int) 1e9+7;
 
-        // First doing for the base cases
-        // Base case for index 0
+        // Writing the base cases
         if (nums[0] == 0) {
-            dp[0][0] = 2; // Pick or not pick
+            dp[0][0] = 2; // pick or not pick
         } else {
-            dp[0][0] = 1; // Not pick
+            dp[0][0] = 1; // not pick
             if (nums[0] <= target)
-                dp[0][nums[0]] = 1; // Pick
+                dp[0][nums[0]] = 1; // pick
         }
-
-        // Two loops will be used
-        for (int i=1;i< nums.length;i++){
-            for (int j = 1; j <= target; j++){
-                int notTake= dp[i-1][j];
+        // Now two loops to fill the values
+        for (int i=1;i < nums.length;i++){
+            // For index values
+            for (int j=1;j<=target;j++){
+                // For target values
+                int notTake = dp[i-1][j];
                 int take=0;
-                if (nums[i]<=j) take=dp[i-1][j-nums[i]];
-                dp[i][j]= (take + notTake) % mod;
+                if (nums[i] <= j) take=dp[i-1][j-nums[i]];
+                dp[i][j] = (take+notTake) % mod;
             }
         }
+
+
         return dp[nums.length-1][target];
-
-    }
-
-    public static void main(String[] args) {
 
     }
 }
