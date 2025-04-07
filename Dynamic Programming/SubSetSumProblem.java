@@ -40,18 +40,22 @@ public class SubSetSumProblem {
 //    }
  // Tabulation apparoch
     public static Boolean isSubsetSum(int arr[], int sum) {
-        boolean [][] dp = new boolean[arr.length+1][sum+1];
+        boolean [][] dp = new boolean[arr.length][sum+1];
 
         //  Writing the base cases
         for (int i =0;i<arr.length;i++) dp[i][0] = true;
         // If first element is within sum, mark it
         if (arr[0] <= sum) dp[0][arr[0]] = true;
+        // As there are two changing parameters we use two nested loops
+
         for (int i =1;i< arr.length;i++){
-            for (int j=1;j<=sum;j++){
-                boolean notTake = dp[i-1][j];
+            // This is for index
+            for (int target = 1; target <=sum; target++){
+                // This is for target
+                boolean notTake = dp[i-1][target];
                 boolean take = false;
-                if (arr[i]<=j) take= dp[i-1][j-arr[i]];
-                dp[i][j]= take || notTake;
+                if (arr[i]<= target) take= dp[i-1][target -arr[i]];
+                dp[i][target]= take || notTake;
             }
         }
         return dp[arr.length][sum];
