@@ -5,7 +5,7 @@ public class PartitionsWithGivenDifference {
 //        int totalSum =0;
 //        for (int i=0;i< nums.length;i++) totalSum+=nums[i];
 //
-//        if (totalSum<D || (totalSum + D) % 2 != 0) return 0;
+//        if (totalSum<D || (totalSum + D) % 2 != 0) return 0; // If total sum is odd we can not get what we want
 //
 //        int target = (totalSum + D) / 2;
 //        // code here
@@ -41,6 +41,8 @@ public class PartitionsWithGivenDifference {
 //        return dp[index][target]= (take+notTake) % mod;
 //
 //    }
+
+
     static int mod = (int)1e9 + 7;
     public static int countPartitions(int[] nums, int D) {
         int totalSum =0;

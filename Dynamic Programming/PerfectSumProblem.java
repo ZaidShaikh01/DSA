@@ -55,7 +55,7 @@ public class PerfectSumProblem {
 
         // Two loops will be used
         for (int i=1;i< nums.length;i++){
-            for (int j = 1; j <= target; j++){
+            for (int j = 0; j <= target; j++){
                 int notTake= dp[i-1][j];
                 int take=0;
                 if (nums[i]<=j) take=dp[i-1][j-nums[i]];
