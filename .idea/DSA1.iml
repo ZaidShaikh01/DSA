@@ -14,6 +14,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Recurusion" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Backtracking" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Dynamic Programming" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BinaryTree" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
