@@ -5,7 +5,7 @@ public class RemoveElement {
     public static int removeElement(int[] nums,int val){
 
 
-        int left = 0;  // Pointer to track the position of non-val elements
+        int left = 0;
 
         for (int right = 0; right < nums.length; right++) {
             if (nums[right] != val) {

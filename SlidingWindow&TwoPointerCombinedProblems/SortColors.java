@@ -6,8 +6,6 @@ public class SortColors {
     public static void sortColors(int [] arr){
         mergeSort(arr,0,arr.length-1);
 
-
-
     }
     private static void mergeSort(int[] arr, int low, int  high) {
         // Base condition to return from recursion

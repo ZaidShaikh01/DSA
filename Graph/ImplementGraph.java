@@ -59,16 +59,77 @@ public class ImplementGraph {
 
     }
     public boolean pathFindRecurse(int start,int end,HashSet<Integer> visited){
-        if(hm.get(start).contains(end)) return true;
+        if(start == end) return true;
         visited.add(start);
-        //System.out.print(start + " ");
+        if(!hm.containsKey(start)) return false;
+        System.out.print(start + " ");
         for(int neighbour: hm.get(start)){
-            if(!visited.contains(neighbour)){
-                pathFindRecurse(neighbour,end,visited);
+            if(!visited.contains(neighbour)) {
+                if (pathFindRecurse(neighbour, end, visited)) {
+                    //System.out.print(neighbour);
+                    return true;
+                }
             }
+
         }
         return false;
     }
+
+    public void totalPath(int start, int end) {
+        HashSet<Integer> visited = new HashSet<>();
+        List<Integer> path = new ArrayList<>();
+        System.out.println("All paths from " + start + " to " + end + ":");
+        pathLookerAll(start, end, visited, path);
+    }
+
+    public void pathLookerAll(int current, int end, HashSet<Integer> visited, List<Integer> path) {
+        visited.add(current);
+        path.add(current);
+
+        if (current == end) {
+            // Print the current path
+            for (int node : path) {
+                System.out.print(node + " ");
+            }
+            System.out.println();
+        } else {
+            if (hm.containsKey(current)) {
+                for (int neighbor : hm.get(current)) {
+                    if (!visited.contains(neighbor)) {
+                        pathLookerAll(neighbor, end, visited, path);
+                    }
+                }
+            }
+        }
+
+        // Backtrack
+        visited.remove(current);
+        path.remove(path.size() - 1);
+    }
+
+
+    public void bfs(int start){
+        HashSet<Integer> visited = new HashSet<>();
+        Queue<Integer> q = new LinkedList<>();
+        visited.add(start);
+        q.add(start);
+        bfsHelperr(q,visited);
+    }
+    public void bfsHelperr(Queue<Integer> q, HashSet<Integer> visited){
+        if(q.isEmpty()){
+            return;
+        }
+        int curr = q.remove();
+        System.out.print(curr + " ");
+        for(int nbr : hm.get(curr)){
+            if(!visited.contains(nbr)){
+                visited.add(nbr);
+                q.add(nbr);
+            }
+        }
+        bfsHelperr(q,visited);
+    }
+
     public static void main(String [] args) {
         ImplementGraph m = new ImplementGraph();
         Scanner sc = new Scanner(System.in);
@@ -84,10 +145,11 @@ public class ImplementGraph {
         }
 
         System.out.println("\nGraph Representation:");
-        m.display();
-        m.dfs(1);
+        //m.display();
+        //m.dfs(1);
         //add(2,3,4,5,5,6,2,1,23);
-        System.out.print(m.pathFind(1,5));
+        m.totalPath(3,6);
+        //m.bfs(1);
     }
     public static void add(int ...a ){
         int sum = 0;
@@ -96,4 +158,16 @@ public class ImplementGraph {
         }
         System.out.println("Sum: " + sum);
     }
+
+
+
 }
+/*
+1 2
+2 5
+5 6
+3 1
+3 2
+3 5
+3 6
+ */

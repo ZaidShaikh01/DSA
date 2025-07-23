@@ -1,3 +1,4 @@
+import java.util.*;
 class BinaryTree{
     Node root;
     BinaryTree(){
@@ -152,6 +153,36 @@ class BinaryTree{
             }
         }
         return true;
+    }
+    public void levelTraversal(){
+        levelTraversalRec(root);
+    }
+    private void levelTraversalRec(Node root){
+        HashSet<Node> visited = new HashSet<>();
+        Queue<Node> q = new LinkedList<>();
+        visited.add(root);
+        q.add(root);
+
+        levelTraversalRecHelper(q,visited);
+    }
+    private void levelTraversalRecHelper(Queue<Node> q , HashSet<Node> visited){
+
+        if(q.isEmpty()){
+            return;
+        }
+        Node curr = q.remove();
+        System.out.print(curr.key + " ");
+
+        LinkedList<Node> hm = new LinkedList<>();
+        hm.add(curr.left);
+        hm.add(curr.right);
+        for(Node nbr : hm){
+            if(nbr!= null &&!visited.contains(nbr)){
+                visited.add(nbr);
+                q.add(nbr);
+            }
+        }
+        levelTraversalRecHelper(q,visited);
     }
 
     public static void main(String[] args){
