@@ -51,6 +51,14 @@ class BinaryTree{
             System.out.print(root.key+" ");
         }
     }
+//    public void boundryLevelTraversal(){
+//        boundryLevelTraversalRec(root);
+//    }
+//    private void boundryLevelTraversalRec(Node root){
+//       if(root!= null) System.out.print(root.key);
+//       if(root.key == null)
+//
+//    }
     public int minValue(){
         return minValueRec(root);
     }
@@ -82,11 +90,68 @@ class BinaryTree{
     public int maximumDepth(){
         return maximumDepthRec(root);
     }
-    public int maximumDepthRec(Node root){
-        if(root == null) return -1;
-        int leftMax = maximumDepthRec(root.left);
-        int rightMax = maximumDepthRec(root.right);
-        return 1+Integer.max(leftMax,rightMax);
+    private int maximumDepthRec(Node root){
+
+        if(root == null) return - 1;
+        int leftNode = maximumDepthRec(root.left);
+        int rightNode = maximumDepthRec(root.right);
+        return 1 + Math.max(leftNode,rightNode);
+    }
+    // If you choose from the left pick the right most
+    // If you choose from the right pick the left most
+    public void deleteNode(int key) {
+        root = deleteNodeRec(root, key);
+    }
+
+    private Node deleteNodeRec(Node root,int key){
+        if(root == null) return null;
+        if(root.key > key) root.left= deleteNodeRec(root.left,key);
+        else if(root.key < key) root.right = deleteNodeRec(root.right,key);
+        else{
+            // with no child
+            if(root.left == null && root.right == null){
+                return null;
+            }
+            else if(root.left == null) return root.right;
+            else if(root.right == null) return root.left;
+            else {
+                int successorValue = minimumValue(root.right);
+                root.key = successorValue;
+                root.right=deleteNodeRec(root.right,successorValue);
+
+            }
+        }
+        return root;
+    }
+    int minimumValue(Node root){
+        while(root.left != null){
+            root = root.left;
+        }
+        return root.key;
+    }
+
+    public boolean validbs(Node root)
+    {
+        if(root!=null && (root.left!=null || root.right!=null))
+        {
+            if(root.key<root.left.key)
+            {
+                return false;
+            }
+            else if(root.left.left!=null)
+            {
+                validbs(root.left);
+            }
+            if(root.key>root.right.key)
+            {
+                return false;
+            }
+            else if(root.right.right!=null)
+            {
+                validbs(root.right);
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args){
@@ -100,7 +165,7 @@ class BinaryTree{
         tree.insert(7);
         tree.insert(60);
         tree.insert(80);
-
+        tree.deleteNode(5);
         System.out.println("Preorder Traversal: ");
         tree.preorder();
         System.out.println();
@@ -113,6 +178,7 @@ class BinaryTree{
         System.out.println("Odd Sum: ");
         System.out.println(tree.sumOfOdd());
         System.out.println("The depth of tree is : "+ tree.maximumDepth());
+       // tree.boundryLevelTraversal();
 
 
         int searchKey = 40;
