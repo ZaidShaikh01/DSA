@@ -2,7 +2,8 @@ import java.util.Arrays;
 
 public class MinimumCostToReachTopFloor {
 
-    // Meoization apparoch
+
+//     Meoization apparoch
 //    public static int minCostClimbingStairs(int[] cost) {
 //        // First of all there are a lot of choices and I can see that backtracking is used So, Maybe lets start with backtracking
 //        // Or Better I will try just with recursion but the choices are made so...

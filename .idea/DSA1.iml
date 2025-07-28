@@ -17,6 +17,8 @@
       <sourceFolder url="file://$MODULE_DIR$/BinaryTree" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Strings" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Graph" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Monotonic Stack" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Prefix" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
