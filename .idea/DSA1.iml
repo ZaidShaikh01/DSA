@@ -19,6 +19,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Graph" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Monotonic Stack" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Prefix" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Matices" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
