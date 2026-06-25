@@ -12,10 +12,12 @@ public static class Stack {
     //    Push method
     public void push(int num) {
 //        Checking overflow
-        if (array.length == count) {
+        if (array.length < count+1) {
             System.out.println("Stack Overflow!!");
             return;
         }
+
+        System.out.println(count);
         array[++count] = num;
     }
 
@@ -56,6 +58,7 @@ public static void main(String[] args) {
     stack.push(1);
     stack.push(2);
     stack.push(3);
+    stack.push(4);
     stack.push(4);
     stack.push(5);
     System.out.println(stack.pop());
