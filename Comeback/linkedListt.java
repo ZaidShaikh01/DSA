@@ -1,3 +1,5 @@
+import com.sun.jdi.OpaqueFrameException;
+
 import java.lang.classfile.constantpool.LongEntry;
 import java.lang.runtime.TemplateRuntime;
 
@@ -107,6 +109,19 @@ public class linkedListt {
         temp.next = nodee;
 
     }
+
+    // Remove at index
+    public void removeAtIndex(int index){
+        if (index == 0){
+            head = head.next;
+            return;
+        }
+        LinkedNodee temp = head;
+        for (int i=1;i<index;i++){
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+    }
 }
 
 void main() {
@@ -126,6 +141,10 @@ void main() {
     linkList.display();
 //    linkList.insert(98732419);
     linkList.insertAtIndex(3,9812);
+    linkList.display();
+    linkList.removeAtIndex(3);
+    linkList.display();
+    linkList.removeAtIndex(5);
     linkList.display();
 
 
