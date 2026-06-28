@@ -1,4 +1,4 @@
-import java.net.SocketTimeoutException;
+import javax.xml.crypto.Data;
 
 void main() {
     Tree tree = new Tree();
@@ -10,7 +10,7 @@ void main() {
     tree.insert(7);
     tree.display();
     System.out.println();
-    tree.search(3);
+    System.out.println(tree.search(2));
 
 
 
@@ -39,57 +39,23 @@ public class Tree {
 	// Insert on rightNode, Insert on leftNode, Insert simple
 	// It requires recursion
     // Search function
+    Tree(){
+        this.root = null;
+    }
 
 
-	//Insert Left
-	public void insert(int data) {
-		// My logic is that it will come in this thing & then it will decide to either go right or left
-		TreeNode newNode = new TreeNode(data);
-		if (root == null) {
-			root = newNode;
-            System.out.println("This is the root.." + root.data);
-			return;
-		}
+    public void insert(int key){
+        root = insertRec(root,key);
+    }
 
-		if (root.data < data) {
-			insertRight(root, data);
-		}
+    private TreeNode insertRec(TreeNode root, int data){
+        if(root == null) root = new TreeNode(data);
+        else if(data < root.data) root.leftNode = insertRec(root.leftNode,data);
+        else root.rightNode = insertRec(root.rightNode,data);
+        return root;
+    }
 
-		if (root.data > data) {
-			insertLeft(root, data);
-		}
-	}
 
-	// I think I need to pass the node as well
-	public void insertRight(TreeNode root, int data) {
-		TreeNode newNode = new TreeNode(data);
-		if (root.rightNode == null) {
-			root.rightNode = newNode;
-			return;
-		}
-		if (root.data < data) {
-			insertRight(root.rightNode, data);
-		}
-
-		if (root.data > data) {
-			insertLeft(root.leftNode, data);
-		}
-	}
-
-	public void insertLeft(TreeNode root, int data) {
-		TreeNode newNode = new TreeNode(data);
-		if (root.leftNode == null) {
-			root.leftNode = newNode;
-			return;
-		}
-		if (root.data < data) {
-			insertRight(root.rightNode, data);
-		}
-
-		if (root.data > data) {
-			insertLeft(root.leftNode, data);
-		}
-	}
 
     public void display() {
         display(root);
@@ -105,49 +71,20 @@ public class Tree {
         display(root.rightNode);
     }
 
-    public void search(int key){
-        Boolean flag =false;
-        // To see if elements are present or not
-        if(root == null){
-            System.out.println("Tree is empty");
-            return;
-        }
-        // To see if the root has the data
-        if(root.data == key){
-//            System.out.println("The key is present");
-            return;
-        }
-        flag = search(root,key,flag);
-        if(flag == true){
-            System.out.println("Present");
-        }
-        else{
-            System.out.println("Not present");
-        }
-
-
+    public boolean search(int key){
+        return search(root,key);
     }
-    private boolean search(TreeNode root, int key, boolean flag){
-        // 3 conditions, tree is empty, root data is less, or root data is more, or no element is present
+    
+    private boolean search(TreeNode root,int key){
         if(root == null){
-            // The key is not present
-            return flag;
+            return false;
         }
-        // To see if the root has the data
-
         if(root.data == key){
-//            System.out.println("The key is present");
-            flag = true;
-            return flag;
+            return true;
         }
-        if(root.data > key){
-        flag = search(root.leftNode, key,flag);
-        }
-        if(root.data < key){
-        flag = search(root.rightNode,key,flag);
-        }
+        else if(key < root.data) return search(root.leftNode,key);
+        else return search(root.rightNode,key);
 
-        return flag;
     }
 
 }
